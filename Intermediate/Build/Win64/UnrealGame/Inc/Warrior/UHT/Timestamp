@@ -1,0 +1,17 @@
+D:\Epic Games\Warrior\Source\Warrior\Public\AbilitySystem\WarriorAttributeSet.h
+D:\Epic Games\Warrior\Source\Warrior\Public\AbilitySystem\WarriorAbilitySystemComponent.h
+D:\Epic Games\Warrior\Source\Warrior\Public\AbilitySystem\Abilities\WarriorGameplayAbility.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Animinstances\WarriorBaseAnimInstance.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Animinstances\WarriorCharacterAnimInstance.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Animinstances\Hero\WarriorHeroLinkedAnimLayer.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Animinstances\WarriorHeroAnimInstance.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Characters\WarriorBaseCharacter.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Characters\WarriorHeroCharacter.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Controllers\WarriorHeroController.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Components\Input\WarriorInputComponent.h
+D:\Epic Games\Warrior\Source\Warrior\Public\DataAssets\StartUpData\DataAsset_HeroStartUpData.h
+D:\Epic Games\Warrior\Source\Warrior\Public\DataAssets\Input\DataAsset_InputConfig.h
+D:\Epic Games\Warrior\Source\Warrior\Public\DataAssets\StartUpData\DataAsset_StartUpDataBase.h
+D:\Epic Games\Warrior\Source\Warrior\Public\GameModes\WarriorBaseGameMode.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Items\Weapon\WarriorHeroWeapon.h
+D:\Epic Games\Warrior\Source\Warrior\Public\Items\Weapon\WarriorWeaponBase.h
