@@ -12,6 +12,10 @@
 #include "WarriorGameplayTags.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "DataAssets/StartUpData/DataAsset_HeroStartUpData.h"
+#include "Components/Combat/HeroCombatComponent.h"
+#include "Components/UI/HeroUIComponent.h"
+
+
 
 #include "WarriorDebugHelper.h"
 
@@ -36,6 +40,25 @@ AWarriorHeroCharacter::AWarriorHeroCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
+
+
+	HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("HeroCombatComponent"));
+	HeroUIComponent = CreateDefaultSubobject<UHeroUIComponent>(TEXT("HeroUIComponent"));
+}
+
+UPawnCombatComponent* AWarriorHeroCharacter::GetPawnCombatComponent() const
+{
+	return HeroCombatComponent;
+}
+
+UPawnUIComponent* AWarriorHeroCharacter::GetPawnUIComponent() const
+{
+	return HeroUIComponent;
+}
+
+UHeroUIComponent* AWarriorHeroCharacter::GetHeroUIComponent() const
+{
+	return HeroUIComponent;
 }
 
 void AWarriorHeroCharacter::PossessedBy(AController* NewController)
@@ -64,11 +87,14 @@ void AWarriorHeroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	UWarriorInputComponent* WarriorInputComponent = CastChecked<UWarriorInputComponent>(PlayerInputComponent);
 	WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset, WarriorGameplayTags::InputTag_Move,ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 	WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset, WarriorGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+
+	WarriorInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
 
 void AWarriorHeroCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	
 }
 
 void AWarriorHeroCharacter::Input_Move(const FInputActionValue& InputActionValue)
@@ -98,4 +124,14 @@ void AWarriorHeroCharacter::Input_Look(const FInputActionValue& InputActionValue
 	{
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AWarriorHeroCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)
+{
+	WarriorAbilitySystemComponent->OnAbilityInputPressed(InInputTag);
+}
+
+void AWarriorHeroCharacter::Input_AbilityInputReleased(FGameplayTag InInputTag)
+{
+	WarriorAbilitySystemComponent->OnAbilityInputReleased(InInputTag);
 }
